@@ -1,0 +1,16 @@
+/admin /admin.html 200
+/admin/ /admin.html 200
+/admin-login /admin.html 200
+/admin/panel /admin.html 200
+/login /login.html 200
+/register /register.html 200
+/dashboard /dashboard.html 200
+/mining /mining.html 200
+/packages /packages.html 200
+/referrals /referrals.html 200
+/deposit /deposit.html 200
+/withdraw /withdrawal.html 200
+/withdrawal /withdrawal.html 200
+/transactions /transactions.html 200
+/support /support.html 200
+/contact /support.html 200

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referral Team | COIN25</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body{font-family:Arial,sans-serif;background:#0A0F1D;color:#F8FAFC}
+    .gold{background:linear-gradient(135deg,#D4AF37,#AA7C11)}
+    .goldtext{background:linear-gradient(135deg,#fff,#D4AF37 55%,#AA7C11);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .glass{background:rgba(19,27,46,.88);border:1px solid rgba(212,175,55,.2)}
+  </style>
+</head>
+<body data-page="referrals" class="min-h-screen">
+  <header class="border-b border-slate-800 bg-[#0D1424] px-4 py-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-4">
+      <a href="dashboard.html" class="flex items-center gap-3"><span class="w-9 h-9 rounded-xl gold flex items-center justify-center text-black font-extrabold">25</span><span class="font-extrabold tracking-widest goldtext">COIN25</span></a>
+      <a href="dashboard.html" class="text-sm text-amber-400 hover:underline">Back to dashboard</a>
+    </div>
+  </header>
+  <main class="max-w-6xl mx-auto p-4 md:p-7 space-y-6">
+    <div class="flex items-center justify-between gap-3"><div><p class="text-xs tracking-[.2em] uppercase text-amber-400 font-bold">Network overview</p><h1 class="text-2xl md:text-3xl font-extrabold mt-1">My Referral Team</h1><p class="text-sm text-slate-400 mt-2">View your team up to four levels deep.</p></div><button id="refreshReferralBtn" class="px-4 py-2 rounded-xl border border-slate-700 text-sm"><i class="fas fa-rotate mr-2"></i>Refresh</button></div>
+    <div id="referralStatus" class="text-xs text-slate-500">Waiting for account connection…</div>
+    <section class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="glass rounded-2xl p-5"><div class="text-xs text-slate-400">Total team</div><div id="refTeamTotal" class="text-2xl font-extrabold mt-2">—</div></div>
+      <div class="glass rounded-2xl p-5"><div class="text-xs text-slate-400">Referral commissions credited</div><div id="refCommissionTotal" class="text-2xl font-extrabold text-emerald-400 mt-2">—</div></div>
+      <div class="glass rounded-2xl p-5 sm:col-span-2"><div class="text-xs text-slate-400">Your referral code</div><div id="myReferralCode" class="text-2xl font-extrabold goldtext mt-2">—</div></div>
+    </section>
+    <section class="glass rounded-2xl p-5 md:p-6 space-y-3">
+      <h2 class="font-bold">Your invitation link</h2>
+      <div class="flex flex-col sm:flex-row gap-2"><input id="myReferralLink" readonly class="min-w-0 flex-1 rounded-xl bg-black/30 border border-slate-700 px-4 py-3 text-sm text-slate-200" value="Loading…"><button id="copyReferralLink" class="gold rounded-xl px-5 py-3 text-sm font-extrabold text-black"><i class="fas fa-copy mr-2"></i>Copy link</button></div>
+    </section>
+    <section class="grid md:grid-cols-2 gap-4">
+      <div class="glass rounded-2xl p-5"><div class="flex justify-between items-center"><h2 class="font-bold">Level 1 · Direct team</h2><span id="refLevel1Count" class="text-amber-400 font-extrabold">0</span></div><p class="text-xs text-slate-500 mt-1">Commission rate: <span id="refRate1">8%</span></p><div id="refLevel1List" class="mt-4"><p class="text-xs text-slate-500">Loading…</p></div></div>
+      <div class="glass rounded-2xl p-5"><div class="flex justify-between items-center"><h2 class="font-bold">Level 2</h2><span id="refLevel2Count" class="text-amber-400 font-extrabold">0</span></div><p class="text-xs text-slate-500 mt-1">Commission rate: <span id="refRate2">4%</span></p><div id="refLevel2List" class="mt-4"><p class="text-xs text-slate-500">Loading…</p></div></div>
+      <div class="glass rounded-2xl p-5"><div class="flex justify-between items-center"><h2 class="font-bold">Level 3</h2><span id="refLevel3Count" class="text-amber-400 font-extrabold">0</span></div><p class="text-xs text-slate-500 mt-1">Commission rate: <span id="refRate3">2%</span></p><div id="refLevel3List" class="mt-4"><p class="text-xs text-slate-500">Loading…</p></div></div>
+      <div class="glass rounded-2xl p-5"><div class="flex justify-between items-center"><h2 class="font-bold">Level 4</h2><span id="refLevel4Count" class="text-amber-400 font-extrabold">0</span></div><p class="text-xs text-slate-500 mt-1">Commission rate: <span id="refRate4">1%</span></p><div id="refLevel4List" class="mt-4"><p class="text-xs text-slate-500">Loading…</p></div></div>
+    </section>
+    <section class="glass rounded-2xl p-5 md:p-6"><h2 class="font-bold">Commission history</h2><div id="refCommissionHistory" class="mt-3 text-sm text-slate-500">Loading…</div></section>
+    <p class="text-xs text-slate-600">Commissions are calculated from completed package purchases and credited to the qualifying upline levels.</p>
+  </main>
+  <div id="toast" class="fixed bottom-4 right-4 z-50 hidden glass px-4 py-3 rounded-xl text-xs"></div>
+  <script src="assets/js/config.js"></script><script src="assets/js/app.js"></script>
+<script src="assets/js/i18n.js"></script></body>
+</html>
